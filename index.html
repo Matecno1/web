@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codificador y Decodificador</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        textarea {
+            width: 80%;
+            height: 100px;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Codificador y Decodificador</h1>
+    <p>Ingresa una palabra o frase para codificar o decodificar:</p>
+    <textarea id="inputText" placeholder="Escribe aquí..."></textarea>
+    <br>
+    <button onclick="codificar()">Codificar</button>
+    <button onclick="decodificar()">Decodificar</button>
+    <div class="output" id="outputText"></div>
+
+    <script>
+        const abecedario = {
+            'A': '!', 'B': ';', 'C': '"', 'D': '#', 'E': '÷', 'F': '$',
+            'G': '%', 'H': '^', 'I': '>', 'J': '&', 'K': '*', 'L': '(',
+            'M': '~', 'N': ',', 'Ñ': ')', 'O': '[', 'P': ']', 'Q': '+',
+            'R': '=', 'S': '@', 'T': '/', 'U': '<', 'V': ':', 'W': '×',
+            'X': "'", 'Y': '_', 'Z': '-',
+            '!': 'A', ';': 'B', '"': 'C', '#': 'D', '÷': 'E', '$': 'F',
+            '%': 'G', '^': 'H', '>': 'I', '&': 'J', '*': 'K', '(': 'L',
+            '~': 'M', ',': 'N', ')': 'Ñ', '[': 'O', ']': 'P', '+': 'Q',
+            '=': 'R', '@': 'S', '/': 'T', '<': 'U', ':': 'V', '×': 'W',
+            "'": 'X', '_': 'Y', '-': 'Z'
+        };
+
+        function codificar() {
+            const input = document.getElementById("inputText").value.toUpperCase();
+            let resultado = '';
+            for (let char of input) {
+                resultado += abecedario[char] || char;
+            }
+            document.getElementById("outputText").innerText = `Codificado: ${resultado}`;
+        }
+
+        function decodificar() {
+            const input = document.getElementById("inputText").value;
+            let resultado = '';
+            for (let char of input) {
+                resultado += abecedario[char] || char;
+            }
+            document.getElementById("outputText").innerText = `Decodificado: ${resultado}`;
+        }
+    </script>
+</body>
+</html>
